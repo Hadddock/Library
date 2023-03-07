@@ -21,7 +21,7 @@ function displayBooks() {
     row.appendChild(title);
 
     const author = document.createElement("td");
-    author.textContent = book.title;
+    author.textContent = book.author;
     row.appendChild(author);
 
     const releaseYear = document.createElement("td");
