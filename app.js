@@ -15,10 +15,10 @@ function toggleForm() {
   }
 }
 
-function Book(title, author, releaseYear, read = false) {
+function Book(title, author, pages, read = false) {
   this.title = title;
   this.author = author;
-  this.releaseYear = releaseYear;
+  this.pages = pages;
   this.read = read;
 }
 
@@ -35,9 +35,9 @@ function displayBooks() {
     author.textContent = book.author;
     row.appendChild(author);
 
-    const releaseYear = document.createElement("td");
-    releaseYear.textContent = book.releaseYear;
-    row.appendChild(releaseYear);
+    const pages = document.createElement("td");
+    pages.textContent = book.pages;
+    row.appendChild(pages);
 
     const read = document.createElement("td");
     read.textContent = book.read ? "Read" : "Not Read";
@@ -63,12 +63,12 @@ function submitBook(e) {
   if (e.preventDefault) e.preventDefault();
   const title = document.getElementById("title");
   const author = document.getElementById("author");
-  const releaseYear = document.getElementById("releaseYear");
+  const pages = document.getElementById("pages");
   const read = document.getElementById("read");
 
-  if (title.value && author.value && releaseYear) {
+  if (title.value && author.value && pages) {
     addBookToLibrary(
-      new Book(title.value, author.value, releaseYear.value, read.value)
+      new Book(title.value, author.value, pages.value, read.value)
     );
     displayBooks();
   }
@@ -79,14 +79,10 @@ function submitBook(e) {
 const bookForm = document.getElementById("bookForm");
 bookForm.addEventListener("submit", submitBook);
 
-const toKillAMockingBird = new Book(
-  "To Kill a Mockingbird",
-  "Harper Lee",
-  1960
-);
+const toKillAMockingBird = new Book("To Kill a Mockingbird", "Harper Lee", 321);
 addBookToLibrary(toKillAMockingBird);
 
-const greenEggsAndHam = new Book("Green Eggs and Ham", "Dr. Seuss", 1960);
+const greenEggsAndHam = new Book("Green Eggs and Ham", "Dr. Seuss", 296, true);
 addBookToLibrary(greenEggsAndHam);
 
 displayBooks();
