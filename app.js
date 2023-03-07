@@ -1,6 +1,11 @@
 const bookList = document.getElementById("BookList");
 const myLibrary = [];
 
+function addBookToLibrary(book) {
+  myLibrary.push(book);
+}
+
+// eslint-disable-next-line no-unused-vars
 function toggleForm() {
   const form = document.getElementById("bookForm");
   if (form.style.display === "none") {
@@ -15,10 +20,6 @@ function Book(title, author, releaseYear, read = false) {
   this.author = author;
   this.releaseYear = releaseYear;
   this.read = read;
-}
-
-function addBookToLibrary(book) {
-  myLibrary.push(book);
 }
 
 function displayBooks() {
