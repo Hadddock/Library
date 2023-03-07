@@ -1,10 +1,11 @@
 const bookList = document.getElementById("BookList");
 const myLibrary = [];
 
-function Book(title, author, releaseYear) {
+function Book(title, author, releaseYear, read = false) {
   this.title = title;
   this.author = author;
   this.releaseYear = releaseYear;
+  this.read = false;
 }
 
 function addBookToLibrary(book) {
@@ -27,9 +28,21 @@ function displayBooks() {
     releaseYear.textContent = book.releaseYear;
     row.appendChild(releaseYear);
 
+    const read = document.createElement("td");
+    read.textContent = book.read ? "Read" : "Not Read";
+    row.appendChild(read);
+
+    const readButtonParent = document.createElement("td");
+    const readButton = document.createElement("button");
+    readButton.textContent = "Book Read";
+    readButtonParent.appendChild(readButton);
+    row.appendChild(readButtonParent);
+
+    const deleteButtonParent = document.createElement("td");
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Remove Book";
-    row.appendChild(deleteButton);
+    deleteButtonParent.appendChild(deleteButton);
+    row.appendChild(deleteButtonParent);
 
     bookList.appendChild(row);
   });
