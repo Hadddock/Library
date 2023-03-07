@@ -11,12 +11,17 @@
   <body>
     <button onclick="toggleForm()">Add new book</button>
     <form id="bookForm" style="display: none">
-      <input type="text" placeholder="title" name="title" />
-      <input type="text" placeholder="author" name="author" />
-      <input type="number" placeholder="Release Year" name="number" />
-      <input type="checkbox" id="read" name="read" />
-      <label for="read">Book read</label>
-      <input type="submit" id="submitButton" />
+      <input type="text" placeholder="title" name="title" id="title" />
+      <input type="text" placeholder="author" name="author" id="author" />
+      <input
+        type="number"
+        placeholder="Release Year"
+        name="releaseYear"
+        id="releaseYear"
+      />
+      <input type="checkbox" id="read" name="read" id="read" />
+      <label for="read">Toggle Read</label>
+      <input type="submit" />
     </form>
     <table>
       <thead>

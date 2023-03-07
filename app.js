@@ -23,6 +23,7 @@ function Book(title, author, releaseYear, read = false) {
 }
 
 function displayBooks() {
+  bookList.replaceChildren();
   myLibrary.forEach((book) => {
     const row = document.createElement("tr");
 
@@ -57,6 +58,26 @@ function displayBooks() {
     bookList.appendChild(row);
   });
 }
+
+function submitBook(e) {
+  if (e.preventDefault) e.preventDefault();
+  const title = document.getElementById("title");
+  const author = document.getElementById("author");
+  const releaseYear = document.getElementById("releaseYear");
+  const read = document.getElementById("read");
+
+  if (title.value && author.value && releaseYear) {
+    addBookToLibrary(
+      new Book(title.value, author.value, releaseYear.value, read.value)
+    );
+    displayBooks();
+  }
+
+  return false;
+}
+
+const bookForm = document.getElementById("bookForm");
+bookForm.addEventListener("submit", submitBook);
 
 const toKillAMockingBird = new Book(
   "To Kill a Mockingbird",
