@@ -1,3 +1,4 @@
+const bookList = document.getElementById("BookList");
 const myLibrary = [];
 
 function Book(title, author, releaseYear) {
@@ -11,7 +12,28 @@ function addBookToLibrary(book) {
 }
 
 function displayBooks() {
-    myLibrary.forEach(book => console.log(book.title));
+   
+    myLibrary.forEach(
+        book => {
+           
+            const row = document.createElement("tr");
+        
+            const title = document.createElement("td");
+            title.textContent = book.title;
+            row.appendChild(title);
+
+            const author = document.createElement("td");
+            author.textContent = book.title;
+            row.appendChild(author);
+
+            const releaseYear = document.createElement("td");
+            releaseYear.textContent = book.releaseYear;
+            row.appendChild(releaseYear);
+
+            bookList.appendChild(row);
+            
+        }
+    );
 }
 
 const toKillAMockingBird = new Book("To Kill a Mockingbird", "Harper Lee", 1960);
