@@ -1,4 +1,4 @@
-const bookList = document.getElementById("BookList");
+const bookList = document.getElementById("bookList");
 const myLibrary = [];
 
 function addBookToLibrary(book) {
@@ -22,8 +22,23 @@ function Book(title, author, pages, read = false) {
   this.read = read;
 }
 
+function toggleRead(e) {
+  console.log(e.target["data-index"]);
+
+  myLibrary.at(e.target["data-index"]).read = !myLibrary.at(
+    e.target["data-index"]
+  ).read;
+  displayBooks();
+}
+
+function deleteBook(e) {
+  myLibrary.splice(e.target["data-index"], 1);
+  displayBooks();
+}
+
 function displayBooks() {
   bookList.replaceChildren();
+  let index = 0;
   myLibrary.forEach((book) => {
     const row = document.createElement("tr");
 
@@ -55,6 +70,12 @@ function displayBooks() {
     deleteButtonParent.appendChild(deleteButton);
     row.appendChild(deleteButtonParent);
 
+    deleteButton["data-index"] = index;
+    deleteButton.onclick = deleteBook;
+    readButton["data-index"] = index;
+    readButton.onclick = toggleRead;
+    index += 1;
+
     bookList.appendChild(row);
   });
 }
@@ -83,6 +104,7 @@ const toKillAMockingBird = new Book("To Kill a Mockingbird", "Harper Lee", 321);
 addBookToLibrary(toKillAMockingBird);
 
 const greenEggsAndHam = new Book("Green Eggs and Ham", "Dr. Seuss", 296, true);
+
 addBookToLibrary(greenEggsAndHam);
 
 displayBooks();
