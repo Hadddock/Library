@@ -1,6 +1,15 @@
 const bookList = document.getElementById("BookList");
 const myLibrary = [];
 
+function toggleForm() {
+  const form = document.getElementById("bookForm");
+  if (form.style.display === "none") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
+}
+
 function Book(title, author, releaseYear, read = false) {
   this.title = title;
   this.author = author;
