@@ -5,7 +5,7 @@ function Book(title, author, releaseYear, read = false) {
   this.title = title;
   this.author = author;
   this.releaseYear = releaseYear;
-  this.read = false;
+  this.read = read;
 }
 
 function addBookToLibrary(book) {
