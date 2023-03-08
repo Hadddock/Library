@@ -1,4 +1,4 @@
-# 📚 Tic-Tac-Toe
+# 📚 Library
 
 A simple non-persistent book-tracking application made for The Odin Project. 
 
